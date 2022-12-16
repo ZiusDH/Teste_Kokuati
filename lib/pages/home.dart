@@ -29,7 +29,14 @@ class _HomePageState extends State<HomePage> {
           child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Container(),
+          Container(
+            color: Color(0xFFF2FFF4),
+          ),
+          SizedBox(
+            width: 256,
+            height: 256,
+            child: Image.asset("assets/simbolo.png"),
+          ),
         ],
       )),
     );
