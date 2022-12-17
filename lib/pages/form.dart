@@ -1,9 +1,43 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert';
+import 'package:flutter/src/widgets/container.dart';
+import 'package:flutter/src/widgets/framework.dart';
 
-class Formulario extends StatelessWidget {
+class Formulario extends StatefulWidget {
   const Formulario({super.key});
+
+  @override
+  State<Formulario> createState() => _FormularioState();
+}
+
+class _FormularioState extends State<Formulario> {
+  TextEditingController txtcep = new TextEditingController();
+  String resultado = "A";
+
+  _consultaCep() async {
+    String cep = txtcep.text;
+
+    String url = "https://viacep.com.br/ws/${cep}/json/";
+
+    //http.Response = resposta;
+    http.Response response;
+    response = await http.get(url);
+
+    Map<String, dynamic> retorno = jsonDecode(response.body);
+
+    String logradouro = retorno["logradouro"];
+    String bairro = retorno["bairro"];
+    String cidade = retorno["localidade"];
+
+    setState(() {
+      resultado = "$logradouro, $bairro, $cidade";
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -34,7 +68,7 @@ class Formulario extends StatelessWidget {
                 ],
               ),
             ),
-            TextFormField(
+            TextField(
               keyboardType: TextInputType.name,
               decoration: InputDecoration(
                 labelText: "Nome",
@@ -90,19 +124,20 @@ class Formulario extends StatelessWidget {
                 fontSize: 20,
                 fontWeight: FontWeight.bold,
               ),
+              controller: txtcep,
             ),
             SizedBox(
               height: 20,
             ),
             TextFormField(
+              onTap: _consultaCep,
               //keyboardType: TextInputType.emailAddress,
               decoration: InputDecoration(
-                labelText: "Endereço",
+                labelText: "$resultado",
                 labelStyle: TextStyle(
                   color: Colors.black38,
                   fontWeight: FontWeight.w400,
                   fontSize: 20,
-                  //fontFamily: inter,
                 ),
               ),
               style: TextStyle(
