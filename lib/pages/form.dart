@@ -1,4 +1,5 @@
 import 'dart:io';
+import "package:teste_kokuati/pages/video.dart";
 
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
@@ -17,7 +18,7 @@ class Formulario extends StatefulWidget {
 
 class _FormularioState extends State<Formulario> {
   TextEditingController txtcep = new TextEditingController();
-  String resultado = "A";
+  String resultado = "Automático";
 
   _consultaCep() async {
     String cep = txtcep.text;
@@ -96,7 +97,6 @@ class _FormularioState extends State<Formulario> {
                   color: Colors.black38,
                   fontWeight: FontWeight.w400,
                   fontSize: 20,
-                  //fontFamily: inter,
                 ),
               ),
               style: TextStyle(
@@ -109,6 +109,7 @@ class _FormularioState extends State<Formulario> {
               height: 20,
             ),
             TextFormField(
+              onEditingComplete: _consultaCep,
               keyboardType: TextInputType.number,
               decoration: InputDecoration(
                 labelText: "Cep",
@@ -116,7 +117,6 @@ class _FormularioState extends State<Formulario> {
                   color: Colors.black38,
                   fontWeight: FontWeight.w400,
                   fontSize: 20,
-                  //fontFamily: inter,
                 ),
               ),
               style: TextStyle(
@@ -129,23 +129,7 @@ class _FormularioState extends State<Formulario> {
             SizedBox(
               height: 20,
             ),
-            TextFormField(
-              onTap: _consultaCep,
-              //keyboardType: TextInputType.emailAddress,
-              decoration: InputDecoration(
-                labelText: "$resultado",
-                labelStyle: TextStyle(
-                  color: Colors.black38,
-                  fontWeight: FontWeight.w400,
-                  fontSize: 20,
-                ),
-              ),
-              style: TextStyle(
-                color: Colors.black,
-                fontSize: 20,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
+            Text("Endereço: $resultado"),
             SizedBox(
               height: 40,
             ),
@@ -156,7 +140,13 @@ class _FormularioState extends State<Formulario> {
                 color: Colors.green,
               ),
               child: TextButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => video(),
+                        ));
+                  },
                   child: SizedBox.expand(
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
