@@ -1,6 +1,3 @@
-import 'dart:ffi';
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
@@ -11,22 +8,31 @@ class Formulario extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      /*appBar: AppBar(
-        title: Text(
-          "CADASTRO",
-          style: TextStyle(
-            fontWeight: FontWeight.bold,
-            fontSize: 28.0,
-          ),
-        ),
-      ),*/
       body: Container(
+        padding: EdgeInsets.only(
+          top: 40,
+          left: 25,
+          right: 25,
+        ),
         //text: Text("CADASTRO"),
         color: Color(0xFFF2FFF4),
         child: ListView(
           children: <Widget>[
             SizedBox(
               height: 60,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    "CADASTRO",
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 40,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ],
+              ),
             ),
             TextFormField(
               keyboardType: TextInputType.name,
@@ -105,8 +111,12 @@ class Formulario extends StatelessWidget {
                 fontWeight: FontWeight.bold,
               ),
             ),
-            Container(
+            SizedBox(
               height: 40,
+            ),
+            Container(
+              height: 60,
+              width: 90,
               decoration: BoxDecoration(
                 color: Colors.green,
               ),
@@ -114,8 +124,16 @@ class Formulario extends StatelessWidget {
                   onPressed: () {},
                   child: SizedBox.expand(
                     child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Text("ENVIAR"),
+                        Text(
+                          "ENVIAR",
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 40,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
                       ],
                     ),
                   )),
