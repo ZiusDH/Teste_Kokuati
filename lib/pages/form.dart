@@ -1,3 +1,4 @@
+import 'dart:ffi';
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
@@ -25,18 +26,99 @@ class Formulario extends StatelessWidget {
         child: ListView(
           children: <Widget>[
             SizedBox(
-              height: 20,
+              height: 60,
             ),
             TextFormField(
               keyboardType: TextInputType.name,
               decoration: InputDecoration(
-                labelText: "NOME",
+                labelText: "Nome",
                 labelStyle: TextStyle(
                   color: Colors.black38,
-                  fontWeight: FontWeight.bold,
+                  fontWeight: FontWeight.w400,
                   fontSize: 20,
+                  //fontFamily: inter,
                 ),
               ),
+              style: TextStyle(
+                color: Colors.black,
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            SizedBox(
+              height: 20,
+            ),
+            TextFormField(
+              keyboardType: TextInputType.emailAddress,
+              decoration: InputDecoration(
+                labelText: "Email",
+                labelStyle: TextStyle(
+                  color: Colors.black38,
+                  fontWeight: FontWeight.w400,
+                  fontSize: 20,
+                  //fontFamily: inter,
+                ),
+              ),
+              style: TextStyle(
+                color: Colors.black,
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            SizedBox(
+              height: 20,
+            ),
+            TextFormField(
+              keyboardType: TextInputType.number,
+              decoration: InputDecoration(
+                labelText: "Cep",
+                labelStyle: TextStyle(
+                  color: Colors.black38,
+                  fontWeight: FontWeight.w400,
+                  fontSize: 20,
+                  //fontFamily: inter,
+                ),
+              ),
+              style: TextStyle(
+                color: Colors.black,
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            SizedBox(
+              height: 20,
+            ),
+            TextFormField(
+              //keyboardType: TextInputType.emailAddress,
+              decoration: InputDecoration(
+                labelText: "Endereço",
+                labelStyle: TextStyle(
+                  color: Colors.black38,
+                  fontWeight: FontWeight.w400,
+                  fontSize: 20,
+                  //fontFamily: inter,
+                ),
+              ),
+              style: TextStyle(
+                color: Colors.black,
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            Container(
+              height: 40,
+              decoration: BoxDecoration(
+                color: Colors.green,
+              ),
+              child: TextButton(
+                  onPressed: () {},
+                  child: SizedBox.expand(
+                    child: Row(
+                      children: [
+                        Text("ENVIAR"),
+                      ],
+                    ),
+                  )),
             ),
           ],
         ),
