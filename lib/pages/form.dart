@@ -49,7 +49,6 @@ class _FormularioState extends State<Formulario> {
           left: 25,
           right: 25,
         ),
-        //text: Text("CADASTRO"),
         color: Color(0xFFF2FFF4),
         child: ListView(
           children: <Widget>[
